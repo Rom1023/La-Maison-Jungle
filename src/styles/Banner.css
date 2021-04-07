@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
+
+.lmj-title{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 24px;
+  font-weight: 700;
+  padding: 32px;
+}
+
+.lmj-logo{
+  width: 45px;
+  height: 45px;
+}
+
+.lmj-banner{
+  text-align: right;
+  border-bottom: solid 3px black;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+}
