@@ -1,3 +1,5 @@
+import '../styles/ShoppingList.css';
+
 const plantList = [
   {
     name: 'monstera',
@@ -12,7 +14,8 @@ const plantList = [
   {
     name: 'pothos argenté',
     category: 'classique',
-    id: '3sd'
+    id: '3sd',
+    isSpecialOffer: true
   },
   {
     name: 'yucca',
@@ -32,12 +35,14 @@ const plantList = [
   {
     name: 'basilique',
     category: 'extérieur',
-    id: '7ie'
+    id: '7ie',
+    isSpecialOffer: true
   },
   {
     name: 'aloe',
     category: 'plante grasse',
-    id: '8fp'
+    id: '8fp',
+    isSpecialOffer: true
   },
   {
     name: 'succulente',
@@ -62,9 +67,11 @@ const ShoppingList = () => {
         ))}
       </ul>
 
-       <ul>
+       <ul className="lmj-plant-list">
         {plantList.map((plant) => (
-          <li key={plant.id}>{plant.name}</li>
+          <li key={plant.id} className="lmj-plant-item">{plant.name}
+                                                        {plant.isSpecialOffer && <div className="lmj-sales">Soldes</div>}
+          </li>
         ))}
       </ul>
     </div>
