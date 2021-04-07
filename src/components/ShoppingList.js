@@ -1,53 +1,71 @@
 import '../styles/ShoppingList.css';
+import PlantItem from './PlantItem';
 
 const plantList = [
   {
     name: 'monstera',
     category: 'classique',
-    id: '1ed'
+    id: '1ed',
+    isBestSale: true,
+    light: 2,
+    water: 3
   },
   {
     name: 'ficus lyrata',
     category: 'classique',
-    id: '2ab'
+    id: '2ab',
+    light: 3,
+    water: 1
   },
   {
     name: 'pothos argenté',
     category: 'classique',
     id: '3sd',
-    isSpecialOffer: true
+    light: 1,
+    water: 2
   },
   {
     name: 'yucca',
     category: 'classique',
-    id: '4kk'
+    id: '4kk',
+    light: 3,
+    water: 1
   },
   {
     name: 'olivier',
     category: 'extérieur',
-    id: '5pl'
+    id: '5pl',
+    light: 3,
+    water: 1
   },
   {
     name: 'géranium',
     category: 'extérieur',
-    id: '6uo'
+    id: '6uo',
+    light: 2,
+    water: 2
   },
   {
     name: 'basilique',
     category: 'extérieur',
     id: '7ie',
-    isSpecialOffer: true
+    isBestSale: true,
+    light: 2,
+    water: 3
   },
   {
     name: 'aloe',
     category: 'plante grasse',
     id: '8fp',
-    isSpecialOffer: true
+    light: 2,
+    water: 1
   },
   {
     name: 'succulente',
     category: 'plante grasse',
-    id: '9vn'
+    id: '9vn',
+    light: 2,
+    water: 1
   }
 ];
 
@@ -68,10 +86,14 @@ const ShoppingList = () => {
       </ul>
 
        <ul className="lmj-plant-list">
-        {plantList.map((plant) => (
-          <li key={plant.id} className="lmj-plant-item">{plant.name}
-                                                        {plant.isSpecialOffer && <div className="lmj-sales">Soldes</div>}
-          </li>
+        {plantList.map(({ id, cover, name, water, light }) => (
+          <PlantItem
+            id={id}
+            cover={cover}
+            name={name}
+            water={water}
+            light={light}
+          />
         ))}
       </ul>
     </div>
