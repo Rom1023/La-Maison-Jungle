@@ -1,6 +1,7 @@
 import Banner from './Banner';
 import Cart from './Cart';
 import ShoppingList from './ShoppingList';
+import Footer from './Footer';
 
 const App = () => {
   return (
@@ -8,6 +9,7 @@ const App = () => {
       <Banner />
       <Cart />
       <ShoppingList />
+      <Footer />
     </div>
   );
 }
