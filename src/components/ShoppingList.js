@@ -98,7 +98,7 @@ const ShoppingList = () => {
 
   return (
     <div className="lmj-shopping-list">
-      <ul>
+      <ul className="lmj-category-list">
         {categories.map((cat) => (
           <li key={cat}>{cat}</li>
         ))}
