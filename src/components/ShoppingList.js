@@ -1,5 +1,8 @@
 import '../styles/ShoppingList.css';
+
 import PlantItem from './PlantItem';
+import Categories from './Categories';
+
 import monstera from '../assets/monstera.jpg';
 import lyrata from '../assets/lyrata.jpg';
 import pothos from '../assets/pothos.jpg';
@@ -9,6 +12,8 @@ import cactus from '../assets/cactus.jpg';
 import basil from '../assets/basil.jpg';
 import succulent from '../assets/succulent.jpg';
 import mint from '../assets/mint.jpg';
+
+import { useState } from 'react';
 
 const plantList = [
   {
@@ -88,7 +93,9 @@ const plantList = [
   }
 ];
 
-const ShoppingList = () => {
+const ShoppingList = ({ cart, setCart }) => {
+  const [activeCategory, setActiveCategory] = useState('');
+
   const categories = plantList.reduce((accumulator, plant) => {
     if (accumulator.includes(plant.category)) {
       return accumulator;
@@ -98,25 +105,20 @@ const ShoppingList = () => {
 
   return (
     <div className="lmj-shopping-list">
-      <ul className="lmj-category-list">
-        {categories.map((cat) => (
-          <li key={cat}>{cat}</li>
-        ))}
-      </ul>
+      <Categories categories={categories} activeCategory={activeCategory} setActiveCategory={setActiveCategory} />
 
        <ul className="lmj-plant-list">
-        {plantList.map(({ id, cover, name, water, light }) => (
-          <PlantItem
-            id={id}
-            cover={cover}
-            name={name}
-            water={water}
-            light={light}
-          />
+          {plantList.map(({ id, cover, name, water, light, category }) => (
+            !activeCategory || activeCategory === category ? (
+              <div key={id}>
+                <PlantItem cover={cover} name={name} water={water} light={light} />
+                <button onClick={() => setCart(cart + 1)}>Ajouter</button>
+              </div>
+            ) : null
         ))}
       </ul>
     </div>
   );
 };
 
-export default ShoppingList
+export default ShoppingList;
