@@ -18,10 +18,10 @@ const CareScale = ({ careType, scaleValue }) => {
   return (
     <div onClick={() => careInfo(careType, scaleValue)}>
       {range.map((element) => (
-        scaleValue >= element ? <span key={element.toString()}>{scaleType}</span> : null
+        scaleValue >= element ? <span className="lmj-care-span" key={element.toString()}>{scaleType}</span> : null
       ))}
     </div>
   );
 };
 
-export default CareScale
+export default CareScale;
