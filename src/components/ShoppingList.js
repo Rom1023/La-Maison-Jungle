@@ -94,7 +94,7 @@ const plantList = [
 ];
 
 const ShoppingList = ({ cart, setCart }) => {
-  const [activeCategory, setActiveCategory] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('');
 
   const categories = plantList.reduce((accumulator, plant) => {
     if (accumulator.includes(plant.category)) {
@@ -105,11 +105,11 @@ const ShoppingList = ({ cart, setCart }) => {
 
   return (
     <div className="lmj-shopping-list">
-      <Categories categories={categories} activeCategory={activeCategory} setActiveCategory={setActiveCategory} />
+      <Categories categories={categories} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
 
        <ul className="lmj-plant-list">
           {plantList.map(({ id, cover, name, water, light, category }) => (
-            !activeCategory || activeCategory === category ? (
+            !selectedCategory || selectedCategory === category ? (
               <div key={id}>
                 <PlantItem cover={cover} name={name} water={water} light={light} />
                 <button onClick={() => setCart(cart + 1)}>Ajouter</button>

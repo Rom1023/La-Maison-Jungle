@@ -1,9 +1,9 @@
 import '../styles/Categories.css'
 
-const Categories = ({ categories, activeCategory, setActiveCategory }) => {
+const Categories = ({ categories, selectedCategory, setSelectedCategory }) => {
   return (
     <div className='lmj-categories'>
-      <select value={activeCategory} onChange={(e) => setActiveCategory(e.target.value)} className='lmj-categories-select'>
+      <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)} className='lmj-categories-select'>
 
         <option value="">All</option>
         {categories.map((cat) => (
