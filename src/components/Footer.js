@@ -8,7 +8,7 @@ const isEmailValid = (email) => {
 };
 
 const Footer = () => {
-    const [inputValue, setInputValue] = useState('Veuillez entrer votre email')
+    const [inputValue, setInputValue] = useState('Veuillez entrer votre email');
 
 return(
   <footer className="lmj-footer">
