@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from 'react';
 import '../styles/Footer.css';
 
 const isEmailValid = (email) => {
