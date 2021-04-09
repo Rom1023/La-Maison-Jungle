@@ -22,7 +22,8 @@ const plantList = [
     id: '1ed',
     light: 2,
     water: 3,
-    cover: monstera
+    cover: monstera,
+    price: 15
   },
   {
     name: 'ficus lyrata',
@@ -30,7 +31,8 @@ const plantList = [
     id: '2ab',
     light: 3,
     water: 1,
-    cover: lyrata
+    cover: lyrata,
+    price: 16
   },
 
   {
@@ -39,7 +41,9 @@ const plantList = [
     id: '3sd',
     light: 1,
     water: 2,
-    cover: pothos
+    cover: pothos,
+
+    price: 9
   },
   {
     name: 'calathea',
@@ -47,7 +51,9 @@ const plantList = [
     id: '4kk',
     light: 2,
     water: 3,
-    cover: calathea
+    cover: calathea,
+
+    price: 20
   },
   {
     name: 'olivier',
@@ -55,7 +61,8 @@ const plantList = [
     id: '5pl',
     light: 3,
     water: 1,
-    cover: olivier
+    cover: olivier,
+    price: 25
   },
 
   {
@@ -64,7 +71,8 @@ const plantList = [
     id: '8fp',
     light: 2,
     water: 1,
-    cover: cactus
+    cover: cactus,
+    price: 6
   },
   {
     name: 'basilique',
@@ -72,7 +80,8 @@ const plantList = [
     id: '7ie',
     light: 2,
     water: 3,
-    cover: basil
+    cover: basil,
+    price: 5
   },
   {
     name: 'succulente',
@@ -80,7 +89,8 @@ const plantList = [
     id: '9vn',
     light: 2,
     water: 1,
-    cover: succulent
+    cover: succulent,
+    price: 8
   },
 
   {
@@ -89,7 +99,8 @@ const plantList = [
     id: '6uo',
     light: 2,
     water: 2,
-    cover: mint
+    cover: mint,
+    price: 4
   }
 ];
 
@@ -103,16 +114,30 @@ const ShoppingList = ({ cart, setCart }) => {
     return accumulator.concat(plant.category);
   }, []);
 
+  const addToCart = (name, price) => {
+    const plantAdded = cart.find((plant) => {
+      return plant.name === name;
+    });
+    if (plantAdded) {
+      const filteredPlantAdded = cart.filter((plant) => {
+        return plant.name !== name;
+      });
+      setCart([...filteredPlantAdded, { name, price, amount: plantAdded.amount + 1 }]);
+    } else {
+      setCart([...cart, { name, price, amount: 1 }]);
+    }
+  };
+
   return (
     <div className="lmj-shopping-list">
       <Categories categories={categories} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
 
        <ul className="lmj-plant-list">
-          {plantList.map(({ id, cover, name, water, light, category }) => (
+          {plantList.map(({ id, cover, name, water, light, category, price }) => (
             !selectedCategory || selectedCategory === category ? (
               <div key={id}>
-                <PlantItem cover={cover} name={name} water={water} light={light} />
-                <button onClick={() => setCart(cart + 1)}>Ajouter</button>
+                <PlantItem cover={cover} name={name} water={water} light={light} price={price} />
+                <button onClick={() => addToCart(name, price)}>Ajouter</button>
               </div>
             ) : null
         ))}
