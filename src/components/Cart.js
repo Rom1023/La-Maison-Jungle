@@ -1,5 +1,5 @@
 import '../styles/Cart.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const Cart = ({ cart, setCart }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -7,6 +7,10 @@ const Cart = ({ cart, setCart }) => {
   const total = cart.reduce((accumulator, plant) => {
     return accumulator + plant.amount * plant.price;
   }, 0);
+
+  useEffect(() => {
+    document.title = `LMJ: ${total}€ d'achats`;
+  }, [total]);
 
   return (
     isOpen ? (
